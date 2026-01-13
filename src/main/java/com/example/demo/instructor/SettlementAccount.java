@@ -1,14 +1,20 @@
 package com.example.demo.instructor;
 
-import jakarta.persistence.Embeddable;
+import jakarta.persistence.*;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@Embeddable
+@Entity
+@Table(name = "settlement_accounts")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class SettlementAccount {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String bankName; // 은행
 
@@ -16,6 +22,7 @@ public class SettlementAccount {
 
     private String accountHolder; // 예금주
 
+    @Builder
     public SettlementAccount(String bankName, String accountNumber, String accountHolder) {
         this.bankName = bankName;
         this.accountNumber = accountNumber;

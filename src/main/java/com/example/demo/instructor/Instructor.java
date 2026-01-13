@@ -32,7 +32,8 @@ public class Instructor {
     @Embedded
     private BusinessInfo businessInfo; // 사업자 관련
 
-    @Embedded
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "settlement_account_id")
     private SettlementAccount settlementAccount; // 정산 계좌
 
     @Column(name = "created_at")
