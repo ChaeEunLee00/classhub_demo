@@ -1,4 +1,4 @@
-package com.example.demo.OnedayClass;
+package com.example.demo.session;
 
 public enum SessionStatus {
     OPEN,        // 모집중(최소인원 미달/달성 여부는 current>=min으로 판단)

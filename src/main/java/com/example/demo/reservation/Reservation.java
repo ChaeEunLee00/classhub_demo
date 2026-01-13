@@ -22,8 +22,9 @@ public class Reservation {
 
     private Long classId;
 
-    @Embedded
-    private ReservationSession reservationSession;
+    private Long sessionId;
+
+    private Long capacity; // 신청 인원수
 
     @Enumerated(EnumType.STRING)
     private ReservationStatus status;
