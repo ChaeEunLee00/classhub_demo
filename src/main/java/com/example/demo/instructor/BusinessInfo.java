@@ -18,29 +18,44 @@ public class BusinessInfo {
 
     private String representativeName; // 대표자명
 
-    // 관련 내용 필요 시 추가
+    // 주소 정보
+    private String zipCode;
+
+    private String address;
+
+    private String addressDetail;
 
     private BusinessInfo(
             boolean isBusiness,
             String registrationNo,
             String businessName,
-            String representativeName
+            String representativeName,
+            String zipCode,
+            String address,
+            String addressDetail
     ) {
         this.isBusiness = isBusiness;
         this.registrationNo = registrationNo;
         this.businessName = businessName;
         this.representativeName = representativeName;
+        this.zipCode = zipCode;
+        this.address = address;
+        this.addressDetail = addressDetail;
     }
 
-    public static BusinessInfo personal() {
-        return new BusinessInfo(false, null, null, null);
+    public static BusinessInfo personal(String zipCode, String address, String addressDetail) {
+        return new BusinessInfo(false, null, null, null, zipCode, address, addressDetail);
     }
 
     public static BusinessInfo business(
             String registrationNo,
             String businessName,
-            String representativeName
+            String representativeName,
+            String zipCode,
+            String address,
+            String addressDetail
     ) {
-        return new BusinessInfo(true, registrationNo, businessName, representativeName);
+        return new BusinessInfo(true, registrationNo, businessName, representativeName,
+                zipCode, address, addressDetail);
     }
 }

@@ -27,10 +27,7 @@ public class Instructor {
     private String phone;
 
     @Embedded
-    private Address address; // 주소
-
-    @Embedded
-    private BusinessInfo businessInfo; // 사업자 관련
+    private BusinessInfo businessInfo; // 사업자 관련 (주소 포함)
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "settlement_account_id")
@@ -41,14 +38,12 @@ public class Instructor {
 
     @Builder
     public Instructor(String loginId, String password, String name, String phone,
-                      Address address, BusinessInfo businessInfo,
-                      SettlementAccount settlementAccount) {
+                      BusinessInfo businessInfo, SettlementAccount settlementAccount) {
         this.loginId = loginId;
         this.password = password;
         this.name = name;
         this.phone = phone;
-        this.address = address;
-        this.businessInfo = (businessInfo != null ? businessInfo : BusinessInfo.personal());
+        this.businessInfo = businessInfo;
         this.settlementAccount = settlementAccount;
         this.createdAt = LocalDateTime.now();
     }
